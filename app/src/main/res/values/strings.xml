@@ -1,0 +1,52 @@
+<resources>
+    <string name="app_name">Music App</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_albums_hot">Albums hot</string>
+    <string name="text_title_details_album">Detail albums</string>
+    <string name="text_playlist_detail_num_of_song">Number of songs: %d</string>
+    <string name="title_more_albums">More albums</string>
+    <string name="hello">Hello</string>
+    <string name="hi">hi</string>
+    <string name="download">download\n</string>
+    <string name="add_to_favorite">favorite</string>
+    <string name="add_to_playlist">Add to playlist</string>
+    <string name="add_to_queue">Add to play next</string>
+    <string name="view_album">View album</string>
+    <string name="view_artist">View artist</string>
+    <string name="block">Block</string>
+    <string name="report_error">Report error</string>
+    <string name="view_song_information">View song information</string>
+    <string name="text_song_detail_title">Title: %s</string>
+    <string name="text_song_detail_artist">Artist %s</string>
+    <string name="text_song_detail_album">Album %s</string>
+    <string name="text_song_detail_duration">Duration %d</string>
+    <string name="text_song_detail_counter">Number of plays: %d</string>
+    <string name="text_song_detail_replay_counter">Number of replay %d</string>
+    <string name="text_song_detail_favorite_status">Is your favorite song?</string>
+    <string name="text_song_detail_year">Publish year: %s</string>
+    <string name="text_song_detail_genre">Genre: %s</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="not_available">N/A</string>
+    <string name="text_song_title">Song_title</string>
+    <string name="text_song_artist">Song artist</string>
+    <string name="now_playing">Now playing</string>
+    <string name="sfsff">sfsff</string>
+    <string name="text_more">.....</string>
+    <string name="under_line">_ __ _</string>
+    <string name="permission_denied">This application can not play music if you don\'t allow it use post notification permission</string>
+    <string name="action_agree">Action agree</string>
+</resources>
