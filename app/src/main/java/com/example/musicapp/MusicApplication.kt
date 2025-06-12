@@ -5,6 +5,7 @@ import android.content.ComponentName
 import androidx.media3.session.MediaController
 
 import androidx.media3.session.SessionToken
+import com.example.musicapp.data.repository.playlist.PlaylistRepositoryImpl
 import com.example.musicapp.data.repository.recent.RecentSongRepositoryImpl
 import com.example.musicapp.data.repository.song.SongRepositoryImpl
 import com.example.musicapp.ui.playing.PlayBackService
@@ -19,6 +20,7 @@ class MusicApplication: Application() {
     private var mediaController: MediaController? = null
     private lateinit var recentSongRepository: RecentSongRepositoryImpl
     private lateinit var songRepository: SongRepositoryImpl
+    private lateinit var playlistRepository: PlaylistRepositoryImpl
 
     override fun onCreate() {
         super.onCreate()
@@ -31,6 +33,8 @@ class MusicApplication: Application() {
         songRepository = InjectionUtils.provideSongRepository(songDataSource)
         val recentSongDataSource = InjectionUtils.provideRecentSongDataSource(applicationContext)
         recentSongRepository = InjectionUtils.provideRecentSongRepository(recentSongDataSource)
+        val playlistDataSource = InjectionUtils.providePlaylistDataSource(applicationContext)
+        playlistRepository = InjectionUtils.providePlaylistRepository(playlistDataSource)
     }
     fun getRecentSongRepository() : RecentSongRepositoryImpl{
         return recentSongRepository
@@ -59,5 +63,8 @@ class MusicApplication: Application() {
     }
     fun getSongRepository(): SongRepositoryImpl{
         return songRepository
+    }
+    fun getPlaylistRepository(): PlaylistRepositoryImpl{
+        return playlistRepository
     }
 }

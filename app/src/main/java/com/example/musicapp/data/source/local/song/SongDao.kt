@@ -14,7 +14,7 @@ interface SongDao {
     @get: Query("SELECT * FROM songs")
     val songs: List<Song>
 
-    @get:Query("SELECT * FROM songs WHERE favorite = 1")
+    @get:Query("SELECT * FROM songs WHERE favorite = 1 LIMIT  15")
     val favoriteSongs: Flow<List<Song>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

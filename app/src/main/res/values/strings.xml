@@ -49,4 +49,7 @@
     <string name="under_line">_ __ _</string>
     <string name="permission_denied">This application can not play music if you don\'t allow it use post notification permission</string>
     <string name="action_agree">Action agree</string>
+    <string name="recent">Recent</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="playlist">Playlist</string>
 </resources>

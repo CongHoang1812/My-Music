@@ -17,6 +17,7 @@ data class Playlist(
     var artwork: String?=null,
      @ColumnInfo(name = "create_at")
     var createAt: Date? = null
+
 ){
      @Ignore
     private val _mediaItem : MutableList<MediaItem> = mutableListOf()

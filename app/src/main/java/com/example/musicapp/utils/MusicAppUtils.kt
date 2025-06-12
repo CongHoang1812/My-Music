@@ -1,6 +1,10 @@
 package com.example.musicapp.utils
 
 object MusicAppUtils {
+
+    @JvmField
+    var DENSITY : Float = 0f
+
     const val EXTRA_CURRENT_FRACTION = "EXTRA_CURRENT_FRACTION"
     const val DEFAULT_MARGIN_END = 48
 

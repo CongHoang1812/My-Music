@@ -1,6 +1,6 @@
 package com.example.musicapp
 
-import android.annotation.SuppressLint
+import android.util.DisplayMetrics
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
@@ -22,6 +22,7 @@ import com.example.musicapp.ui.viewmodel.ShareViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.example.musicapp.ui.home.HomeViewModel
 import com.example.musicapp.ui.viewmodel.PermissionViewModel
+import com.example.musicapp.utils.MusicAppUtils
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -131,6 +132,19 @@ class MainActivity : AppCompatActivity() {
         saveCurrentSong()
     }
     private fun setupComponents() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+           val windowMetrics = windowManager.currentWindowMetrics
+           if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE){
+               MusicAppUtils.DENSITY = windowMetrics.density
+           }else{
+               MusicAppUtils.DENSITY = 1f*windowMetrics.bounds.width()/ DisplayMetrics.DENSITY_DEFAULT
+           }
+        }else{
+            val displayMetrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
+            MusicAppUtils.DENSITY = displayMetrics.density
+
+        }
         shareViewModel.initPlayList()
         sharedPreferences = getSharedPreferences(
             "net.braniumacademy.musicapplication.preff_file",
@@ -167,6 +181,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 
     companion object {
         const val PREF_SONG_ID = "PREF_SONG_ID"
