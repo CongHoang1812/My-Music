@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/include_button_crate_playlist"
+        android:id="@+id/include_button_create_playlist"
         layout="@layout/partial_playlist_creation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,6 +48,6 @@
         app:layout_constraintHeight_max="340dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/include_button_crate_playlist" />
+        app:layout_constraintTop_toBottomOf="@id/include_button_create_playlist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

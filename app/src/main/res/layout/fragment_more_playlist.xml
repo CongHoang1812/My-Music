@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.album.more.MoreAlbumFragment" >
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_more_album"
-        android:layout_width="0dp"
+    tools:context=".ui.library.playlist.more.MorePlaylistFragment">
 
-        android:layout_height="64dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_more_playlist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ToolbarStyle"
@@ -18,31 +18,30 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/text_title_more_playlist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="@string/title_more_albums"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:textColor="@color/white"
-            tools:ignore="TextSizeCheck"
-            tools:layout_editor_absoluteX="144dp" />
+            android:text="@string/title_playlist"
+            android:textAppearance="@style/TextAppearance.Material3.ActionBar.Title"
+            android:textColor="@color/white" />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_more_album"
-        android:layout_width="409dp"
+        android:id="@+id/rv_more_playlist"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/include_empty_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/include_empty_item_more_playlist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_more_album"
-        app:spanCount="2"
-        tools:listitem="@layout/item_more_album" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_more_playlist"
+        tools:listitem="@layout/item_playlist" />
+
     <include
-        android:id="@+id/include_empty_item"
+        android:id="@+id/include_empty_item_more_playlist"
         layout="@layout/partial_item_empty"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

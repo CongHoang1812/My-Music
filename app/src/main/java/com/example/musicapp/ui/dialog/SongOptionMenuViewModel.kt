@@ -8,10 +8,12 @@ import com.example.musicapp.utils.OptionMenuUtils
 class SongOptionMenuViewModel :ViewModel() {
     private val _song = MutableLiveData<Song>()
     private val _optionMenuItems = MutableLiveData<List<MenuItem>>()
+    private val _playlistName = MutableLiveData<String>()
     val song: MutableLiveData<Song>
         get() = _song
     val optionMenuItems: MutableLiveData<List<MenuItem>>
         get() = _optionMenuItems
+    val playlistName: MutableLiveData<String> = _playlistName
 
     init {
         _optionMenuItems.value = OptionMenuUtils.songOptionMenuItems
@@ -22,6 +24,9 @@ class SongOptionMenuViewModel :ViewModel() {
     }
     fun setOptionMenuItems(optionMenuItems: List<MenuItem>){
         _optionMenuItems.postValue(optionMenuItems)
+    }
+    fun setPlaylistName(name: String) {
+        _playlistName.value = name
     }
 
 

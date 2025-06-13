@@ -4,14 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.musicapp.MusicApplication
 import com.example.musicapp.R
+import com.example.musicapp.data.model.playlist.Playlist
 import com.example.musicapp.data.model.song.Song
 import com.example.musicapp.databinding.DialogFragmentSongOptionMenuBinding
 import com.example.musicapp.databinding.ItemOptionMenuBinding
+import com.example.musicapp.ui.library.playlist.PlaylistViewModel
 import com.example.musicapp.utils.OptionMenuUtils
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -20,6 +24,12 @@ class SongOptionMenuDialogFragment : BottomSheetDialogFragment() {
     private lateinit var adapter: MenuItemAdapter
     private val viewModel: SongOptionMenuViewModel by activityViewModels()
     private val  songInfoViewModel: DialogSongInfoViewModel by activityViewModels()
+    private val playlistViewModel: PlaylistViewModel by activityViewModels {
+        val application = requireActivity().application as MusicApplication
+        PlaylistViewModel.Factory(application.getPlaylistRepository())
+    }
+    private var isClicked = false
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +52,19 @@ class SongOptionMenuDialogFragment : BottomSheetDialogFragment() {
         }
         viewModel.song.observe(viewLifecycleOwner) {
             showSongInfo(it)
+        }
+        playlistViewModel.addResult.observe(viewLifecycleOwner) { addResult ->
+            if (isClicked) {
+                val messageId = if (addResult) {
+                    R.string.add_to_playlist_success
+                } else {
+                    R.string.add_to_playlist_failed
+                }
+                val playlistName = viewModel.playlistName.value ?: ""
+                val message = requireActivity().getString(messageId, playlistName)
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                isClicked = false
+            }
         }
     }
 
@@ -90,7 +113,18 @@ class SongOptionMenuDialogFragment : BottomSheetDialogFragment() {
     }
 
     private fun addToPlayList(){
-
+        val tag = DialogAddSongToPlaylistFragment.TAG
+        val dialog = DialogAddSongToPlaylistFragment(
+            object : DialogAddSongToPlaylistFragment.OnPlaylistSelectedListener {
+                override fun onPlaylistSelected(playlist: Playlist) {
+                    val song = viewModel.song.value
+                    viewModel.setPlaylistName(playlist.name)
+                    playlistViewModel.createPlaylistSongCrossRef(playlist, song)
+                    isClicked = true
+                }
+            }
+        )
+        dialog.show(requireActivity().supportFragmentManager, tag)
     }
     private fun addToQueue(){
 

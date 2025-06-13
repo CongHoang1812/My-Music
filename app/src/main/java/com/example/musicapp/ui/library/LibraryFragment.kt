@@ -38,6 +38,12 @@ class LibraryFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
+        if (savedInstanceState != null) {
+            val scrollPosition = savedInstanceState.getInt(SCROLL_POSITION)
+            binding.scrollViewLibrary.post {
+                binding.scrollViewLibrary.scrollTo(0, scrollPosition)
+            }
+        }
     }
     private fun observeData() {
         libraryViewModel.recentSongs.observe(viewLifecycleOwner) { recentSongs ->
@@ -46,9 +52,15 @@ class LibraryFragment: Fragment() {
         libraryViewModel.favoriteSongs.observe(viewLifecycleOwner){favoriteSongs ->
             favoriteViewModel.setSongs(favoriteSongs)
         }
-        libraryViewModel.playlists.observe(viewLifecycleOwner){playlists ->
-            playlistViewModel.setPlaylist(playlists)
-        }
-
+//        libraryViewModel.playlists.observe(viewLifecycleOwner){playlists ->
+//            playlistViewModel.setPlaylist(playlists)
+//        }
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(SCROLL_POSITION, binding.scrollViewLibrary.scrollY)
+    }
+    companion object {
+        const val SCROLL_POSITION = "net.braniumacademy.musicapplication.ui.library.SCROLL_POSITION"
     }
 }

@@ -52,4 +52,18 @@
     <string name="recent">Recent</string>
     <string name="title_favorite">Favorite</string>
     <string name="playlist">Playlist</string>
+    <string name="title_recent">Recent songs</string>
+    <string name="title_recommended">Recommended songs</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="playlist_name_hint">play_list_name</string>
+    <string name="title_create_playlist">Create playlist\n</string>
+    <string name="action_create">Create</string>
+    <string name="error_empty_playlist_name">play list is must not empt</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="error_playlist_exists">Playlist is exists</string>
+    <string name="title_playlist">Play list</string>
+    <string name="add_to_playlist_success">Add to playlist success\n</string>
+    <string name="add_to_playlist_failed">Add to playlist failed</string>
+    <string name="title_playlist_detail">Playlist detail</string>
 </resources>

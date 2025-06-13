@@ -39,23 +39,28 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (!isObserver) {
-            setUpObserver()
+            setupObserver()
             isObserver = true
         }
 
     }
 
 
-    override fun onDestroy() {
-        super.onDestroy()
+//    override fun onDestroy() {
+//        super.onDestroy()
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        Log.e("==>", "HomeFragment: onDestroyView")
+//    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val scrollPosition = binding.scrollViewHome.scrollY
+        outState.putInt(SCROLL_POSITION, scrollPosition)
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.e("==>", "HomeFragment: onDestroyView")
-    }
-
-    private fun setUpObserver() {
+    private fun setupObserver() {
         homeViewModel.albums.observe(viewLifecycleOwner) {
             albumViewModel.setAlbums(it)
         }
@@ -63,14 +68,16 @@ class HomeFragment : Fragment() {
             homeViewModel.saveSongsToDB()
         }
         homeViewModel.localSongs.observe(viewLifecycleOwner) {
-            if(it.isEmpty()){
-                homeViewModel.songs.observe(viewLifecycleOwner){remoteSongs ->
+            if (it.isEmpty()) {
+                homeViewModel.songs.observe(viewLifecycleOwner) { remoteSongs ->
                     songViewModel.setSongs(remoteSongs)
                 }
-            }else{
+            } else {
                 songViewModel.setSongs(it)
             }
         }
-
+    }
+    companion object {
+        const val SCROLL_POSITION = "net.braniumacademy.musicapplication.ui.home.SCROLL_POSITION"
     }
 }
