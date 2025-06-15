@@ -11,4 +11,7 @@
     <style name="MiniPlayerTheme">
         <item name="android:background">@color/purple_50</item>
     </style>
+    <style name="ButtonBackgroundTheme">
+        <item name="android:backgroundTint">@color/purple_50</item>
+    </style>
 </resources>

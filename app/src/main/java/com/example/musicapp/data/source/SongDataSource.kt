@@ -18,6 +18,15 @@ interface SongDataSource {
         suspend fun update(song: Song)
 
         suspend fun updateFavorite(id: String, favorite: Boolean)
+
+
+        val top15MostHeardSongs: Flow<List<Song>>
+
+        val top40MostHeardSongs: Flow<List<Song>>
+
+        val top15ForYouSongs: Flow<List<Song>>
+
+        val top40ForYouSongs: Flow<List<Song>>
     }
     interface Remote{
 

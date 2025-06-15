@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val homeViewModel: HomeViewModel by activityViewModels{
         val application = requireActivity().application as MusicApplication
-        HomeViewModel.Factory(application.getSongRepository())
+        HomeViewModel.Factory(application.songRepository)
     }
     private val albumViewModel: AlbumHotViewModel by activityViewModels()
     private val songViewModel: RecommendedViewModel by activityViewModels()

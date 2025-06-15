@@ -34,4 +34,16 @@ class LocalSongDataSource(
         songDao.updateFavorite(id, favorite)
     }
 
+    override val top15MostHeardSongs: Flow<List<Song>>
+        get() = songDao.top15MostHeardSongs
+
+    override val top40MostHeardSongs: Flow<List<Song>>
+        get() = songDao.top40MostHeardSongs
+
+    override val top15ForYouSongs: Flow<List<Song>>
+        get() = songDao.top15ForYouSongs
+
+    override val top40ForYouSongs: Flow<List<Song>>
+        get() = songDao.top40ForYouSongs
+
 }

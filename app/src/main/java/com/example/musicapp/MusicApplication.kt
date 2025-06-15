@@ -5,6 +5,7 @@ import android.content.ComponentName
 import androidx.media3.session.MediaController
 
 import androidx.media3.session.SessionToken
+import com.example.musicapp.data.repository.artist.ArtistRepositoryImpl
 import com.example.musicapp.data.repository.playlist.PlaylistRepositoryImpl
 import com.example.musicapp.data.repository.recent.RecentSongRepositoryImpl
 import com.example.musicapp.data.repository.song.SongRepositoryImpl
@@ -19,8 +20,15 @@ class MusicApplication: Application() {
     private lateinit var controllerFuture: ListenableFuture<MediaController>
     private var mediaController: MediaController? = null
     private lateinit var recentSongRepository: RecentSongRepositoryImpl
-    private lateinit var songRepository: SongRepositoryImpl
     private lateinit var playlistRepository: PlaylistRepositoryImpl
+    private lateinit var _artistRepository: ArtistRepositoryImpl
+    private lateinit var _songRepository: SongRepositoryImpl
+    val artistRepository:ArtistRepositoryImpl
+        get() = _artistRepository
+
+    val songRepository: SongRepositoryImpl
+        get() = _songRepository
+
 
     override fun onCreate() {
         super.onCreate()
@@ -30,11 +38,18 @@ class MusicApplication: Application() {
 
     private fun setUpComponents() {
          val songDataSource = InjectionUtils.provideSongDataSource(applicationContext)
-        songRepository = InjectionUtils.provideSongRepository(songDataSource)
+        _songRepository = InjectionUtils.provideSongRepository(songDataSource)
+
         val recentSongDataSource = InjectionUtils.provideRecentSongDataSource(applicationContext)
         recentSongRepository = InjectionUtils.provideRecentSongRepository(recentSongDataSource)
+
         val playlistDataSource = InjectionUtils.providePlaylistDataSource(applicationContext)
         playlistRepository = InjectionUtils.providePlaylistRepository(playlistDataSource)
+
+        val artistDataSource = InjectionUtils.provideArtistDataSource(applicationContext)
+        _artistRepository = InjectionUtils.provideArtistRepository(artistDataSource)
+
+
     }
     fun getRecentSongRepository() : RecentSongRepositoryImpl{
         return recentSongRepository
@@ -61,9 +76,7 @@ class MusicApplication: Application() {
         }, MoreExecutors.directExecutor())
 
     }
-    fun getSongRepository(): SongRepositoryImpl{
-        return songRepository
-    }
+
     fun getPlaylistRepository(): PlaylistRepositoryImpl{
         return playlistRepository
     }

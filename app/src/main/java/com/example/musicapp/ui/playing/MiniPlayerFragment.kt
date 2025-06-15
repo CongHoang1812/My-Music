@@ -32,7 +32,7 @@ class MiniPlayerFragment : Fragment(), View.OnClickListener {
 
     private val viewModel: MiniPlayerViewModel by activityViewModels {
         val application = requireActivity().application as MusicApplication
-        val repository = application.getSongRepository()
+        val repository = application.songRepository
         MiniPlayerViewModel.Factory(repository)
     }
     private var mediaController: MediaController? = null

@@ -43,6 +43,16 @@ class SongRepositoryImpl(
     override suspend fun updateFavorite(id: String, favorite: Boolean) {
         localSongDataSource.updateFavorite(id, favorite)
     }
+    override val top15MostHeardSongs: Flow<List<Song>>
+        get() = localSongDataSource.top15MostHeardSongs
 
+    override val top40MostHeardSongs: Flow<List<Song>>
+        get() = localSongDataSource.top40MostHeardSongs
+
+    override val top15ForYouSongs: Flow<List<Song>>
+        get() = localSongDataSource.top15ForYouSongs
+
+    override val top40ForYouSongs: Flow<List<Song>>
+        get() = localSongDataSource.top40ForYouSongs
 
 }

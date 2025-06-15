@@ -19,7 +19,7 @@ class LibraryFragment: Fragment() {
         val application = requireActivity().application as MusicApplication
         LibraryViewModel.Factory(
             application.getRecentSongRepository(),
-            application.getSongRepository(),
+            application.songRepository,
             application.getPlaylistRepository()
         )
     }

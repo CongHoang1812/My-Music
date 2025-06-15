@@ -66,4 +66,18 @@
     <string name="add_to_playlist_success">Add to playlist success\n</string>
     <string name="add_to_playlist_failed">Add to playlist failed</string>
     <string name="title_playlist_detail">Playlist detail</string>
+    <string name="image_button_description">btn search\n</string>
+    <string name="title_discovery">Discovery</string>
+    <string name="image_desc">fsfsfsdf</string>
+    <string name="artist_name">Artist name</string>
+    <string name="text_number_subscriber">Number subsriber: %d</string>
+    <string name="action_interest">Interest</string>
+    <string name="title_artist">Artist</string>
+    <string name="title_artist_detail">Artist detail</string>
+    <string name="text_artist_name">Artist name: %s</string>
+    <string name="text_number_of_interest">Number of interest: %d</string>
+    <string name="text_your_interested">Your interested artist: %s</string>
+    <string name="title_most_heard">Most heard</string>
+    <string name="title_for_you">For you</string>
+    <string name="title_song_for_you">Songs for you</string>
 </resources>

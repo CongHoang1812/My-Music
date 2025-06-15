@@ -14,4 +14,6 @@ class RecentSongRepositoryImpl(
     override suspend fun insert(vararg recentSong: RecentSong) {
         localDataSource.insert(*recentSong)
     }
+
+
 }

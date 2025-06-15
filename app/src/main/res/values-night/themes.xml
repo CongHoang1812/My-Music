@@ -8,4 +8,7 @@
         <item name="android:background">@color/black</item>
     </style>
     <style name="Theme.MusicApp" parent="Base.Theme.MusicApp" />
+    <style name="ButtonBackgroundTheme">
+        <item name="android:backgroundTint">@color/purple_50</item>
+    </style>
 </resources>

@@ -32,6 +32,18 @@ interface SongDao {
     @Query("SELECT * FROM songs WHERE song_id = :id")
     suspend fun getSongById(id: String): Song?
 
+    @get:Query("SELECT * FROM songs ORDER BY counter DESC LIMIT 15")
+    val top15MostHeardSongs: Flow<List<Song>>
+
+    @get:Query("SELECT * FROM songs ORDER BY counter DESC LIMIT 40")
+    val top40MostHeardSongs: Flow<List<Song>>
+
+    @get:Query("SELECT * FROM songs ORDER BY replay DESC LIMIT 15")
+    val top15ForYouSongs: Flow<List<Song>>
+
+    @get:Query("SELECT * FROM songs ORDER BY replay DESC LIMIT 40")
+    val top40ForYouSongs: Flow<List<Song>>
+
 
 
 }

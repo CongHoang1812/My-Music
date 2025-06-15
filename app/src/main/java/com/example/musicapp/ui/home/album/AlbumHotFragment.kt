@@ -26,7 +26,7 @@ class AlbumHotFragment : Fragment() {
     private val detailAlbumViewModel : DetailAlbumViewModel by activityViewModels()
     private val homeViewModel: HomeViewModel by activityViewModels{
         val application = requireActivity().application as MusicApplication
-        HomeViewModel.Factory(application.getSongRepository())
+        HomeViewModel.Factory(application.songRepository)
     }
     private val moreAlbumViewModel: MoreAlbumViewModel by activityViewModels()
     override fun onCreateView(

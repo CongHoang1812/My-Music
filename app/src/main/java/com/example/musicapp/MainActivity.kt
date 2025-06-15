@@ -34,13 +34,13 @@ class MainActivity : AppCompatActivity() {
         val application = application as MusicApplication
         ShareViewModel.Factory(
             application.getRecentSongRepository(),
-            application.getSongRepository()
+            application.songRepository
 
         )
     }
     private val homeViewModel: HomeViewModel by viewModels{
         val application = application as MusicApplication
-        HomeViewModel.Factory(application.getSongRepository())
+        HomeViewModel.Factory(application.songRepository)
     }
     private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()){isGranted->
         if(!isGranted){
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
     private val shareViewModel: ShareViewModel by viewModels{
         val application = application as MusicApplication
-        ShareViewModel.Factory(application.getRecentSongRepository(), application.getSongRepository())
+        ShareViewModel.Factory(application.getRecentSongRepository(), application.songRepository)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
